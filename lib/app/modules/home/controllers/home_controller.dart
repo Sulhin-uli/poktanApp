@@ -1,20 +1,81 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poktan_app/app/modules/home/Models/menu_home_model.dart';
+import 'package:poktan_app/app/modules/tandur/views/index_tandur_view.dart';
+import 'package:poktan_app/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  var tabIndex = 0.obs;
+  var menu_home = List<MenuHome>.empty().obs;
 
-  final count = 0.obs;
+  void changeTabIndex(int index) {
+    tabIndex.value = index;
+  }
+
+  void getDataItemMenu() {
+    final data1 = MenuHome(
+      id: "1",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Jadwal Tandur",
+      color: Colors.green,
+      route: Routes.INDEX_TANDUR,
+    );
+    menu_home.add(data1);
+
+    final data2 = MenuHome(
+      id: "1",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Jadwal Panen",
+      color: Colors.green,
+      route: Routes.INDEX_PANEN,
+    );
+    menu_home.add(data2);
+
+    final data3 = MenuHome(
+      id: "1",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Petani",
+      color: Colors.green,
+      route: Routes.INDEX_PETANI,
+    );
+    menu_home.add(data3);
+
+    // final datas = [
+    //   {
+    //     "id": "1",
+    //     "image":
+    //         "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+    //     "title": "Jadwal Tandur",
+    //     "color": "32a86d",
+    //     "route": Routes.INDEX_EDUKASI,
+    //   },
+    //   {
+    //     "id": "1",
+    //     "image":
+    //         "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+    //     "title": "Jadwal Tandur",
+    //     "color": "32a86d",
+    //     "route": Routes.INDEX_EDUKASI,
+    //   }
+    // ];
+
+    // for (var i = 0; i < datas.length; i++) {
+    //   final data = MenuHome(
+    //     id: datas[i]["id"].toString(),
+    //     image: datas[i]["image"].toString(),
+    //     color: datas[i]["color"].toString(),
+    //     route: datas[i]["route"].toString(),
+    //   );
+    //   menu_home.add(data);
+    // }
+  }
+
   @override
   void onInit() {
+    getDataItemMenu();
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
