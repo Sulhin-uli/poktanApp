@@ -11,8 +11,13 @@ class IndexPetaniView extends GetView<PetaniController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff16A085),
-        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: BackButton(color: Colors.black),
+        title: Text(
+          'Petani',
+          style: TextStyle(color: Colors.black, fontSize: 16),
+        ),
+        elevation: 0.5,
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

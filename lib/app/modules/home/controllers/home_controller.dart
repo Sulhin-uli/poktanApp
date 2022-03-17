@@ -43,6 +43,56 @@ class HomeController extends GetxController {
     );
     menu_home.add(data3);
 
+    final data4 = MenuHome(
+      id: "4",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Kegiatan",
+      color: Colors.green,
+      route: Routes.INDEX_KEGIATAN,
+    );
+    menu_home.add(data4);
+
+    final data5 = MenuHome(
+      id: "5",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Edukasi",
+      color: Colors.green,
+      route: Routes.INDEX_POKTAN,
+    );
+    menu_home.add(data5);
+
+    final data6 = MenuHome(
+      id: "6",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Saya",
+      color: Colors.green,
+      route: Routes.INDEX_SAYA,
+    );
+    menu_home.add(data6);
+
+    final data7 = MenuHome(
+      id: "7",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Notifikasi",
+      color: Colors.green,
+      route: Routes.INDEX_NOTIFIKASI,
+    );
+    menu_home.add(data7);
+
+    final data8 = MenuHome(
+      id: "8",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Menu",
+      color: Colors.green,
+      route: Routes.INDEX_SAYA,
+    );
+    menu_home.add(data8);
+
     // final datas = [
     //   {
     //     "id": "1",

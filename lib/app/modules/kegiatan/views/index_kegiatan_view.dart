@@ -10,15 +10,15 @@ class IndexKegiatanView extends GetView<KegiatanController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: BackButton(color: Colors.black),
-        title: Text(
-          'Kegiatan',
-          style: TextStyle(color: Colors.black, fontSize: 16),
-        ),
-        elevation: 0.5,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   // leading: BackButton(color: Colors.black),
+      //   title: Text(
+      //     'Kegiatan',
+      //     style: TextStyle(color: Colors.black, fontSize: 16),
+      //   ),
+      //   elevation: 0.5,
+      // ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(

@@ -49,7 +49,116 @@ class DetailPetaniView extends GetView<PetaniController> {
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Container(),
+        child: Container(
+          margin: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://www.startupdonut.co.uk/sites/default/files/styles/landing_pages_lists/public/Guy_watson_249x167.png?itok=e_ct04Rx'),
+                ),
+                title: const Text('Name Petani'),
+              ),
+              Divider(
+                color: Colors.black.withOpacity(0.5),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: Text(
+                  "Title",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Column",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                        ),
+                        Text(
+                          "Value",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Color(0xff919A92),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Column",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                        ),
+                        Text(
+                          "Value",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Color(0xff919A92),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Column",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                        ),
+                        Text(
+                          "Value",
+                          style: TextStyle(
+                            color: Color(0xff919A92),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Color(0xff919A92),
+                    ),
+                    Container(
+                      height: 200,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
