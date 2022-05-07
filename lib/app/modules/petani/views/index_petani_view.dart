@@ -42,7 +42,7 @@ class IndexPetaniView extends GetView<PetaniController> {
         backgroundColor: const Color(0xff16A085),
         foregroundColor: Colors.white,
         // mini: true,
-        onPressed: () => Get.toNamed(Routes.EDIT_PETANI),
+        onPressed: () => Get.toNamed(Routes.ADD_PETANI),
         child: Icon(Icons.add),
       ),
     );
