@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poktan_app/app/modules/home/controllers/home_controller.dart';
 
-class ItemMenuView extends GetView<HomeController> {
-  ItemMenuView(this.data);
+class ItemMenu extends GetView<HomeController> {
+  ItemMenu(this.data);
   final data;
 
   @override
@@ -16,8 +16,8 @@ class ItemMenuView extends GetView<HomeController> {
           children: [
             Container(
               // color: index % 2 == 0 ? Colors.amber : Colors.red,
-              width: 45,
-              height: 45,
+              width: 37,
+              height: 37,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
@@ -38,7 +38,8 @@ class ItemMenuView extends GetView<HomeController> {
               data.title!,
               maxLines: 2,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, color: Colors.amber[700]),
+              style:
+                  TextStyle(fontSize: 10, color: Colors.black.withOpacity(0.5)),
             ),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:poktan_app/app/modules/edukasi/views/add_edukasi_view.dart';
 import 'package:poktan_app/app/modules/edukasi/views/detail_edukasi_view.dart';
 import 'package:poktan_app/app/modules/edukasi/views/edit_edukasi_view.dart';
 import 'package:poktan_app/app/modules/edukasi/views/index_edukasi_view.dart';
+import 'package:poktan_app/app/modules/home/views/index_home_view.dart';
 import 'package:poktan_app/app/modules/kegiatan/bindings/kegiatan_binding.dart';
 import 'package:poktan_app/app/modules/kegiatan/views/add_kegiatan_view.dart';
 import 'package:poktan_app/app/modules/kegiatan/views/detail_kegiatan_view.dart';
@@ -31,7 +32,7 @@ import 'package:poktan_app/app/modules/tandur/views/detail_tandur_view.dart';
 import 'package:poktan_app/app/modules/tandur/views/index_tandur_view.dart';
 
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
+
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 
@@ -45,7 +46,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => IndexHomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
