@@ -1,73 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:poktan_app/app/modules/kegiatan/controllers/kegiatan_controller.dart';
-import 'package:poktan_app/app/routes/app_pages.dart';
+import 'package:format_indonesia/format_indonesia.dart';
+import 'package:poktan_app/app/modules/tandur/controllers/tandur_controller.dart';
 
 import 'package:get/get.dart';
 
-class DetailTandurView extends GetView<KegiatanController> {
+class DetailTandurView extends GetView<TandurController> {
   @override
   Widget build(BuildContext context) {
+    final data = controller.findByTandur(Get.arguments);
+    DateTime datetime = DateTime.parse(data.platingDate!);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           'Detail Tandur',
           style: TextStyle(color: Colors.black, fontSize: 16),
         ),
-        leading: BackButton(color: Colors.black),
-        actions: [
-          Container(
-            alignment: Alignment.topRight,
-            child: PopupMenuButton(
-              icon: Icon(
-                Icons.more_vert,
-                color: Colors.black,
-              ),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                PopupMenuItem(
-                  child: ListTile(
-                    onTap: () => Get.toNamed(Routes.EDIT_KEGIATAN),
-                    leading: Icon(Icons.edit),
-                    title: Text('Ubah'),
-                  ),
-                ),
-                PopupMenuItem(
-                  child: ListTile(
-                    onTap: () {
-                      controller.dialogQuestion(
-                          "Hapus", "Yakin menghapus data?", context);
-                    },
-                    leading: Icon(Icons.delete),
-                    title: Text('Delete'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        leading: const BackButton(color: Colors.black),
         elevation: 0.5,
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://www.startupdonut.co.uk/sites/default/files/styles/landing_pages_lists/public/Guy_watson_249x167.png?itok=e_ct04Rx'),
                 ),
-                title: const Text('Name Poktan'),
+                title: Text(data.farmerId!.userId!.name!),
               ),
               Divider(
                 color: Colors.black.withOpacity(0.5),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(16, 16, 16, 16),
-                child: Text(
-                  "Title",
+                margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: const Text(
+                  "Detail",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -75,84 +47,112 @@ class DetailTandurView extends GetView<KegiatanController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 16, right: 16),
+                margin: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          "Column",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                        const SizedBox(
+                          width: 80,
+                          child: Text(
+                            "Tanaman",
+                            style: TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            width: 50,
                           ),
                         ),
                         SizedBox(
-                          width: 80,
-                        ),
-                        Text(
-                          "Value",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                          width: 150,
+                          child: Text(
+                            data.plantTanaman!,
+                            style: const TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
                     ),
                     Row(
                       children: [
-                        Text(
-                          "Column",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                        const SizedBox(
+                          width: 80,
+                          child: Text(
+                            "Luas Tanah",
+                            style: TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            width: 50,
                           ),
                         ),
                         SizedBox(
-                          width: 80,
-                        ),
-                        Text(
-                          "Value",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                          width: 150,
+                          child: Text(
+                            data.surfaceArea!,
+                            style: const TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
                     ),
                     Row(
                       children: [
-                        Text(
-                          "Column",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                        const SizedBox(
+                          width: 80,
+                          child: Text(
+                            "Tgl Tandur",
+                            style: TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            width: 50,
                           ),
                         ),
                         SizedBox(
-                          width: 80,
-                        ),
-                        Text(
-                          "Value",
-                          style: TextStyle(
-                            color: Color(0xff919A92),
-                            fontSize: 14,
+                          width: 150,
+                          child: Text(
+                            Waktu(datetime).yMMMMEEEEd(),
+                            style: const TextStyle(
+                              color: Color(0xff919A92),
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Container(
                       height: 200,
-                    )
+                    ),
                   ],
                 ),
               )

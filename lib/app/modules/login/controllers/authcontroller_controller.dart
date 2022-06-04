@@ -1,11 +1,11 @@
-import 'package:poktan_app/app/data/providers/login_provider.dart';
+import 'package:poktan_app/app/modules/login/controllers/login_controller.dart';
 import 'package:poktan_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthcontrollerController extends GetxController {
   final box = GetStorage();
-  var isAuth = false.obs;
+  LoginController loginController = Get.put(LoginController());
 
   void dialogError(String msg) {
     Get.defaultDialog(title: "Terjadi Kesalahan", middleText: msg);
@@ -20,33 +20,11 @@ class AuthcontrollerController extends GetxController {
   Future<void> autoLogin() async {
     if (box.read("userData") != null) {
       final data = box.read("userData") as Map<String, dynamic>;
-      login(data["email"], data["password"]);
+      loginController.login(data["email"], data["password"]);
+    } else {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Get.offAllNamed(Routes.LOGIN);
+      });
     }
-  }
-
-  void login(String email, String password) async {
-    LoginProvider().login(email, password).then(
-      (response) {
-        if (email != '' && password != '') {
-          if (response['success'] == true) {
-            box.write('userData', {
-              "id": response['data']['id'],
-              "token": response['data']['token'],
-              "email": email,
-              "password": password
-            });
-            box.write('isAuth', true);
-            Get.toNamed(Routes.HOME);
-
-            // _homeController.changeTabIndex(0);
-            // cartController.getData();
-          } else {
-            dialogError('Akun tidak ditemukan');
-          }
-        } else {
-          dialogError('Semua data input harus di isi');
-        }
-      },
-    );
   }
 }

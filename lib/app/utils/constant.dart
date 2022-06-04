@@ -1,8 +1,8 @@
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 
-// final formatCurrency = NumberFormat("#,##0", "eu");
+final formatCurrency = NumberFormat("#,##0", "eu");
 
 // Colors that we use in our app
 const kPrimaryColor = Color(0xff16A085);

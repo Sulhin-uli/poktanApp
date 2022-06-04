@@ -11,30 +11,36 @@ class IndexTandurView extends GetView<TandurController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: BackButton(color: Colors.black),
-        title: Text(
+        leading: const BackButton(color: Colors.black),
+        title: const Text(
           'Jadwal Tandur',
           style: TextStyle(color: Colors.black, fontSize: 16),
         ),
         elevation: 0.5,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(2),
-          child: Column(
-            children: [
-              ListView.builder(
-                itemCount: 11,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  // final product = productList[index];
-                  return ItemView();
-                },
+      body: Obx(
+        () => controller.plantTandur.isEmpty
+            ? const Center(
+                child: CircularProgressIndicator(),
               )
-            ],
-          ),
-        ),
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        itemCount: controller.plantTandur.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final data = controller.plantTandur[index];
+                          return ItemView(data);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
       ),
     );
   }
