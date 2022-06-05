@@ -2,7 +2,7 @@ import 'package:poktan_app/app/utils/base_url.dart';
 import 'package:get/get.dart';
 
 class EducationCategoryProvider extends GetConnect {
-  String url = baseUrl + "education-category/";
+  String url = baseUrl + "education-category";
 
   Future<dynamic> postData(
     String name,

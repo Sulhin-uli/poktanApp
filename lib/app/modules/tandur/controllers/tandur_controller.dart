@@ -28,8 +28,7 @@ class TandurController extends GetxController {
     return PlantProvider().getData(data["token"]).then((response) {
       try {
         response["data"].map((e) {
-          if (e["farmer_id"]["poktan_id"]["gapoktan_id"]["id"] ==
-              data["gapoktan_id"]) {
+          if (e["farmer_id"]["poktan_id"]['id'] == data["poktan_id"]) {
             if (e["status"] == "selesai") {
               final data = Plant(
                 id: e["id"],
@@ -66,8 +65,7 @@ class TandurController extends GetxController {
     return PlantProvider().getData(data["token"]).then((response) {
       try {
         response["data"].map((e) {
-          if (e["farmer_id"]["poktan_id"]["gapoktan_id"]["id"] ==
-              data["gapoktan_id"]) {
+          if (e["farmer_id"]["poktan_id"]['id'] == data["poktan_id"]) {
             if (e["status"] == "tandur") {
               final data = Plant(
                 id: e["id"],
@@ -104,8 +102,7 @@ class TandurController extends GetxController {
     return PlantProvider().getData(data["token"]).then((response) {
       try {
         response["data"].map((e) {
-          if (e["farmer_id"]["poktan_id"]["gapoktan_id"]["id"] ==
-              data["gapoktan_id"]) {
+          if (e["farmer_id"]["poktan_id"]['id'] == data["poktan_id"]) {
             if (e["status"] == "panen") {
               final data = Plant(
                 id: e["id"],

@@ -16,6 +16,7 @@ import 'package:poktan_app/app/modules/education/views/index_education_view.dart
 import 'package:poktan_app/app/modules/education_category/bindings/education_category_binding.dart';
 import 'package:poktan_app/app/modules/education_category/views/add_category_education_view.dart';
 import 'package:poktan_app/app/modules/education_category/views/edit_category_education_view.dart';
+import 'package:poktan_app/app/modules/education_category/views/education_category_view.dart';
 import 'package:poktan_app/app/modules/history_plant/views/detail_history_plant_view.dart';
 import 'package:poktan_app/app/modules/history_plant/views/history_plant_view.dart';
 import 'package:poktan_app/app/modules/home/views/index_home_view.dart';
@@ -35,17 +36,8 @@ import 'package:poktan_app/app/modules/poktan/views/add_poktan_view.dart';
 import 'package:poktan_app/app/modules/poktan/views/detail_poktan_view.dart';
 import 'package:poktan_app/app/modules/poktan/views/edit_poktan_view.dart';
 import 'package:poktan_app/app/modules/poktan/views/index_poktan_view.dart';
-import 'package:poktan_app/app/modules/product_category/bindings/product_category_binding.dart';
-import 'package:poktan_app/app/modules/product_category/views/add_category_product_view.dart';
-import 'package:poktan_app/app/modules/product_category/views/edit_category_product_view.dart';
-import 'package:poktan_app/app/modules/product_category/views/product_category_view.dart';
-import 'package:poktan_app/app/modules/produk/bindings/produk_binding.dart';
-import 'package:poktan_app/app/modules/produk/views/add_produk_view.dart';
-import 'package:poktan_app/app/modules/produk/views/detail_produk_view.dart';
-import 'package:poktan_app/app/modules/produk/views/edit_produk_view.dart';
-import 'package:poktan_app/app/modules/produk/views/index_produk_view.dart';
 import 'package:poktan_app/app/modules/saya/bindings/saya_binding.dart';
-import 'package:poktan_app/app/modules/saya/views/edit_category_product_view.dart';
+import 'package:poktan_app/app/modules/saya/views/edit_profile_view.dart';
 import 'package:poktan_app/app/modules/saya/views/edit_password_view.dart';
 import 'package:poktan_app/app/modules/saya/views/index_saya_view.dart';
 import 'package:poktan_app/app/modules/tandur/bindings/tandur_binding.dart';
@@ -104,6 +96,11 @@ class AppPages {
     ),
     // Edukasi Kategori
     GetPage(
+      name: _Paths.INDEX_EDUCATION_CATEGORY,
+      page: () => EducationCategoryView(),
+      binding: EducationCategoryBinding(),
+    ),
+    GetPage(
       name: _Paths.ADD_EDUCATION_CATEGORY,
       page: () => AddCategoryEducationView(),
       binding: EducationCategoryBinding(),
@@ -112,44 +109,6 @@ class AppPages {
       name: _Paths.EDIT_EDUCATION_CATEGORY,
       page: () => EditCategoryEducationView(),
       binding: EducationCategoryBinding(),
-    ),
-
-    // Produk
-    GetPage(
-      name: _Paths.INDEX_PRODUK,
-      page: () => IndexProdukView(),
-      binding: ProdukBinding(),
-    ),
-    GetPage(
-      name: _Paths.DETAIL_PRODUK,
-      page: () => DetailProdukView(),
-      binding: ProdukBinding(),
-    ),
-    GetPage(
-      name: _Paths.ADD_PRODUK,
-      page: () => AddProdukView(),
-      // binding: PRODUKBinding(),
-    ),
-    GetPage(
-      name: _Paths.EDIT_PRODUK,
-      page: () => EditProdukView(),
-      binding: ProdukBinding(),
-    ),
-    // Product Kategori
-    GetPage(
-      name: _Paths.INDEX_PRODUCT_CATEGORY,
-      page: () => ProductCategoryView(),
-      binding: ProductCategoryBinding(),
-    ),
-    GetPage(
-      name: _Paths.ADD_PRODUCT_CATEGORY,
-      page: () => AddCategoryProductView(),
-      binding: ProductCategoryBinding(),
-    ),
-    GetPage(
-      name: _Paths.EDIT_PRODUCT_CATEGORY,
-      page: () => EditCategoryProductView(),
-      binding: ProductCategoryBinding(),
     ),
 
     // Kegiatan

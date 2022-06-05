@@ -16,6 +16,27 @@ class ItemViewCategoryActivity extends GetView<ActivityCategoryController> {
         children: [
           ListTile(
             title: Text(data.name),
+            trailing: Wrap(
+              spacing: 1, // space between two icons
+              children: [
+                InkWell(
+                  onTap: () => Get.toNamed(Routes.EDIT_ACTIVITY_CATEGORY,
+                      arguments: data.id),
+                  child: const Icon(
+                    Icons.edit,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () => controller.dialogQuestion(context, data.id),
+                  child: const Icon(
+                    Icons.delete,
+                    size: 20,
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),

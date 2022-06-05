@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:poktan_app/app/data/providers/akun_poktan_provider.dart';
 import 'package:poktan_app/app/data/providers/gapoktan_provider.dart';
 import 'package:poktan_app/app/data/providers/poktan_provider.dart';
 import 'package:poktan_app/app/data/providers/user_provider.dart';
+import 'package:poktan_app/app/modules/login/controllers/login_controller.dart';
 import 'package:poktan_app/app/utils/base_url.dart';
 import 'package:poktan_app/app/utils/constant.dart';
 import 'package:get/get.dart';
@@ -23,6 +25,7 @@ class SayaController extends GetxController {
   var hiddenTextPasswordConfirm = true.obs;
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
+  LoginController loginController = Get.put(LoginController());
 
   @override
   void onInit() {
@@ -58,8 +61,10 @@ class SayaController extends GetxController {
     String image,
   ) {
     final data = box.read("userData") as Map<String, dynamic>;
-    Map<String, String> body = {"id": data["gapoktan_id"].toString()};
-    GapoktanProvider().updateImage(body, image, data["token"]).then((response) {
+    Map<String, String> body = {"id": data["poktan_id"].toString()};
+    AkunPoktanProvider()
+        .updateImage(body, image, data["token"])
+        .then((response) {
       print(response);
     });
   }
@@ -71,10 +76,16 @@ class SayaController extends GetxController {
     String telp,
   ) {
     final data = box.read("userData") as Map<String, dynamic>;
-    GapoktanProvider()
+    var item = loginController.findPoktan(data["id"]);
+    AkunPoktanProvider()
         .updateData(
-            data["gapoktan_id"], chairman, city, address, telp, data["token"])
+            data["poktan_id"], chairman, city, address, telp, data["token"])
         .then((_) {
+      item.chairman = chairman;
+      item.city = city;
+      item.address = address;
+      item.telp = telp;
+      loginController.poktan.refresh();
       dialog("Berhasil !", "data berhasil diubah");
       Get.back();
     });
@@ -101,7 +112,7 @@ class SayaController extends GetxController {
               "token": data["token"],
               "email": data["email"],
               "password": passwordNew,
-              "gapoktan_id": data["gapoktan_id"],
+              "poktan_id": data["poktan_id"],
             });
             Get.back();
             dialog("Berhasil !", "data berhasil diubah");

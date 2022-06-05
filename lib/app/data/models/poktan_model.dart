@@ -8,7 +8,7 @@ class Poktan {
   String? chairman;
   String? city;
   String? address;
-  int? telp;
+  String? telp;
   String? image;
   bool? isActive;
 

@@ -14,6 +14,7 @@ abstract class Routes {
   static const EDIT_EDUCATION = _Paths.EDIT_EDUCATION;
 
   // Kategori Edukasi
+  static const INDEX_EDUCATION_CATEGORY = _Paths.INDEX_EDUCATION_CATEGORY;
   static const ADD_EDUCATION_CATEGORY = _Paths.ADD_EDUCATION_CATEGORY;
   static const EDIT_EDUCATION_CATEGORY = _Paths.EDIT_EDUCATION_CATEGORY;
 
@@ -84,6 +85,7 @@ abstract class _Paths {
   static const EDIT_EDUCATION = '/edit-education';
 
   // Kategori Edukasi
+  static const INDEX_EDUCATION_CATEGORY = '/index-education-category';
   static const ADD_EDUCATION_CATEGORY = '/add-education-category';
   static const EDIT_EDUCATION_CATEGORY = '/edit-education-category';
 

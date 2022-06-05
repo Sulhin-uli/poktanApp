@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class HistoryPlantView extends GetView<TandurController> {
   @override
   Widget build(BuildContext context) {
+    // print(controller.plantAll.length);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

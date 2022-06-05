@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poktan_app/app/modules/home/Models/menu_home_model.dart';
+import 'package:poktan_app/app/modules/login/controllers/login_controller.dart';
 import 'package:poktan_app/app/modules/tandur/views/index_tandur_view.dart';
 import 'package:poktan_app/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   var tabIndex = 0.obs;
   var menu_home = List<MenuHome>.empty().obs;
+  LoginController loginController = Get.put(LoginController());
 
   void changeTabIndex(int index) {
     tabIndex.value = index;
@@ -24,7 +26,7 @@ class HomeController extends GetxController {
     menu_home.add(data1);
 
     final data2 = MenuHome(
-      id: "1",
+      id: "2",
       image:
           "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
       title: "Jadwal Panen",
@@ -34,32 +36,31 @@ class HomeController extends GetxController {
     menu_home.add(data2);
 
     final data3 = MenuHome(
-      id: "1",
+      id: "3",
       image:
           "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Petani",
+      title: "Edukasi",
       color: Colors.green,
-      route: Routes.INDEX_PETANI,
+      route: Routes.INDEX_EDUCATION,
     );
     menu_home.add(data3);
 
     final data4 = MenuHome(
-      id: "4",
-      image:
-          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Kegiatan",
-      color: Colors.green,
-      route: Routes.INDEX_ACTIVITY,
-    );
+        id: "4",
+        image:
+            "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+        title: "Kegiatan",
+        color: Colors.green,
+        route: Routes.INDEX_ACTIVITY);
     menu_home.add(data4);
 
     final data5 = MenuHome(
       id: "5",
       image:
           "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Edukasi",
+      title: "Kategori Edukasi",
       color: Colors.green,
-      route: Routes.INDEX_POKTAN,
+      route: Routes.INDEX_EDUCATION_CATEGORY,
     );
     menu_home.add(data5);
 
@@ -67,65 +68,37 @@ class HomeController extends GetxController {
       id: "6",
       image:
           "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Saya",
+      title: "Kategori Kegiatan",
       color: Colors.green,
-      route: Routes.INDEX_SAYA,
+      route: Routes.INDEX_ACTIVITY_CATEGORY,
     );
     menu_home.add(data6);
-
-    final data7 = MenuHome(
-      id: "7",
-      image:
-          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Notifikasi",
-      color: Colors.green,
-      route: Routes.INDEX_NOTIFIKASI,
-    );
-    menu_home.add(data7);
 
     final data8 = MenuHome(
       id: "8",
       image:
           "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-      title: "Menu",
+      title: "Petani",
       color: Colors.green,
-      route: Routes.INDEX_SAYA,
+      route: Routes.INDEX_PETANI,
     );
     menu_home.add(data8);
 
-    // final datas = [
-    //   {
-    //     "id": "1",
-    //     "image":
-    //         "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-    //     "title": "Jadwal Tandur",
-    //     "color": "32a86d",
-    //     "route": Routes.INDEX_EDUKASI,
-    //   },
-    //   {
-    //     "id": "1",
-    //     "image":
-    //         "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
-    //     "title": "Jadwal Tandur",
-    //     "color": "32a86d",
-    //     "route": Routes.INDEX_EDUKASI,
-    //   }
-    // ];
-
-    // for (var i = 0; i < datas.length; i++) {
-    //   final data = MenuHome(
-    //     id: datas[i]["id"].toString(),
-    //     image: datas[i]["image"].toString(),
-    //     color: datas[i]["color"].toString(),
-    //     route: datas[i]["route"].toString(),
-    //   );
-    //   menu_home.add(data);
-    // }
+    final data9 = MenuHome(
+      id: "9",
+      image:
+          "https://cdn.icon-icons.com/icons2/3361/PNG/512/preferences_user_interface_ux_apps_grid_options_ui_menu_categories_icon_210806.png",
+      title: "Saya",
+      color: Colors.green,
+      route: 'saya',
+    );
+    menu_home.add(data9);
   }
 
   @override
   void onInit() {
     getDataItemMenu();
+    loginController.getDataPoktan();
     super.onInit();
   }
 }

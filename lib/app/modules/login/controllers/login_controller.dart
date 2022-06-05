@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poktan_app/app/data/models/gapoktan_model.dart';
+import 'package:poktan_app/app/data/models/poktan_model.dart';
 import 'package:poktan_app/app/data/models/user_model.dart';
-import 'package:poktan_app/app/data/providers/gapoktan_provider.dart';
 import 'package:poktan_app/app/data/providers/login_provider.dart';
+import 'package:poktan_app/app/data/providers/poktan_provider.dart';
 import 'package:poktan_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,7 +11,7 @@ import 'package:get_storage/get_storage.dart';
 class LoginController extends GetxController {
   final box = GetStorage();
   var isAuth = false.obs;
-  var gapoktan = List<Gapoktan>.empty().obs;
+  var poktan = List<Poktan>.empty().obs;
   late TextEditingController email;
   late TextEditingController password;
   var hiddenTextPassword = true.obs;
@@ -38,7 +39,7 @@ class LoginController extends GetxController {
               "password": password
             });
             box.write('isAuth', true);
-            getDataGapoktan();
+            getDataPoktan();
             Get.offAllNamed(Routes.HOME);
           } else {
             Get.offAllNamed(Routes.LOGIN);
@@ -51,16 +52,23 @@ class LoginController extends GetxController {
     );
   }
 
-  void getDataGapoktan() async {
+  void getDataPoktan() async {
     final data = box.read("userData") as Map<String, dynamic>;
-    GapoktanProvider().getData(data["token"]).then((response) {
+    PoktanProvider().getData(data["token"]).then((response) {
       try {
         response["data"].map((e) {
-          final data = Gapoktan(
+          final data = Poktan(
             id: e["id"],
             userId: User(
               id: e["user_id"]["id"],
               name: e["user_id"]["name"],
+            ),
+            gapoktanId: Gapoktan(
+              id: e["user_id"]["id"],
+              userId: User(
+                id: e["user_id"]["id"],
+                name: e["user_id"]["name"],
+              ),
             ),
             chairman: e["chairman"],
             city: e["city"],
@@ -68,7 +76,7 @@ class LoginController extends GetxController {
             telp: e["telp"].toString(),
             image: e["image"],
           );
-          gapoktan.add(data);
+          poktan.add(data);
         }).toList();
         final data = box.read("userData") as Map<String, dynamic>;
         box.write('userData', {
@@ -76,7 +84,7 @@ class LoginController extends GetxController {
           "token": data["token"],
           "email": data["email"],
           "password": data["password"],
-          "gapoktan_id": findGapoktan(data["id"]).id,
+          "poktan_id": findPoktan(data["id"]).id,
         });
       } catch (e) {
         print("Error is : " + e.toString());
@@ -84,7 +92,7 @@ class LoginController extends GetxController {
     });
   }
 
-  Gapoktan findGapoktan(int id) {
-    return gapoktan.firstWhere((e) => e.userId!.id! == id);
+  Poktan findPoktan(int id) {
+    return poktan.firstWhere((e) => e.userId!.id! == id);
   }
 }
