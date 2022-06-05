@@ -53,12 +53,6 @@ abstract class Routes {
   static const DETAIL_HISTORY_PLANT = _Paths.DETAIL_HISTORY_PLANT;
 
   // Poktan
-  static const INDEX_POKTAN = _Paths.INDEX_POKTAN;
-  static const DETAIL_POKTAN = _Paths.DETAIL_POKTAN;
-  static const ADD_POKTAN = _Paths.ADD_POKTAN;
-  static const EDIT_POKTAN = _Paths.EDIT_POKTAN;
-
-  // Petani
   static const INDEX_PETANI = _Paths.INDEX_PETANI;
   static const DETAIL_PETANI = _Paths.DETAIL_PETANI;
   static const ADD_PETANI = _Paths.ADD_PETANI;
@@ -122,12 +116,6 @@ abstract class _Paths {
   // History tanam tandur
   static const HISTORY_PLANT = '/history-plant';
   static const DETAIL_HISTORY_PLANT = '/detail-history-plant';
-
-  // poktan
-  static const INDEX_POKTAN = '/index-poktan';
-  static const DETAIL_POKTAN = '/detail-poktan';
-  static const ADD_POKTAN = '/add-poktan';
-  static const EDIT_POKTAN = '/edit-poktan';
 
   // Petani
   static const INDEX_PETANI = '/index-Petani';

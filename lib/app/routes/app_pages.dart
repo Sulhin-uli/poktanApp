@@ -31,11 +31,6 @@ import 'package:poktan_app/app/modules/petani/views/add_petani_view.dart';
 import 'package:poktan_app/app/modules/petani/views/detail_petani_view.dart';
 import 'package:poktan_app/app/modules/petani/views/edit_petani_view.dart';
 import 'package:poktan_app/app/modules/petani/views/index_petani_view.dart';
-import 'package:poktan_app/app/modules/poktan/bindings/poktan_binding.dart';
-import 'package:poktan_app/app/modules/poktan/views/add_poktan_view.dart';
-import 'package:poktan_app/app/modules/poktan/views/detail_poktan_view.dart';
-import 'package:poktan_app/app/modules/poktan/views/edit_poktan_view.dart';
-import 'package:poktan_app/app/modules/poktan/views/index_poktan_view.dart';
 import 'package:poktan_app/app/modules/saya/bindings/saya_binding.dart';
 import 'package:poktan_app/app/modules/saya/views/edit_profile_view.dart';
 import 'package:poktan_app/app/modules/saya/views/edit_password_view.dart';
@@ -186,28 +181,6 @@ class AppPages {
 
     // Poktan
     GetPage(
-      name: _Paths.INDEX_POKTAN,
-      page: () => IndexPoktanView(),
-      binding: PoktanBinding(),
-    ),
-    GetPage(
-      name: _Paths.DETAIL_POKTAN,
-      page: () => DetailPoktanView(),
-      binding: PoktanBinding(),
-    ),
-    GetPage(
-      name: _Paths.ADD_POKTAN,
-      page: () => AddPoktanView(),
-      // binding: PRODUKBinding(),
-    ),
-    GetPage(
-      name: _Paths.EDIT_POKTAN,
-      page: () => EditPoktanView(),
-      // binding: EdukasiBinding(),
-    ),
-
-    // Petani
-    GetPage(
       name: _Paths.INDEX_PETANI,
       page: () => IndexPetaniView(),
       binding: PetaniBinding(),
@@ -227,6 +200,7 @@ class AppPages {
       page: () => EditPetaniView(),
       // binding: EdukasiBinding(),
     ),
+
     // Saya
     GetPage(
       name: _Paths.INDEX_SAYA,

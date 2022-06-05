@@ -1,72 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:poktan_app/app/modules/petani/controllers/petani_controller.dart';
-import 'package:poktan_app/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
+import 'package:poktan_app/app/modules/petani/controllers/petani_controller.dart';
 
 class DetailPetaniView extends GetView<PetaniController> {
   @override
   Widget build(BuildContext context) {
+    final data = controller.findByid(Get.arguments);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
-          'Detail Petani',
+        title: const Text(
+          'Detail Poktan',
           style: TextStyle(color: Colors.black, fontSize: 16),
         ),
-        leading: BackButton(color: Colors.black),
-        actions: [
-          Container(
-            alignment: Alignment.topRight,
-            child: PopupMenuButton(
-              icon: Icon(
-                Icons.more_vert,
-                color: Colors.black,
-              ),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                PopupMenuItem(
-                  child: ListTile(
-                    onTap: () => Get.toNamed(Routes.EDIT_PETANI),
-                    leading: Icon(Icons.edit),
-                    title: Text('Ubah'),
-                  ),
-                ),
-                PopupMenuItem(
-                  child: ListTile(
-                    onTap: () {
-                      controller.dialogQuestion(
-                          "Hapus", "Yakin menghapus data?", context);
-                    },
-                    leading: Icon(Icons.delete),
-                    title: Text('Delete'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        leading: const BackButton(color: Colors.black),
         elevation: 0.5,
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://www.startupdonut.co.uk/sites/default/files/styles/landing_pages_lists/public/Guy_watson_249x167.png?itok=e_ct04Rx'),
                 ),
-                title: const Text('Name Petani'),
+                title: Text(data.userId!.name!),
               ),
               Divider(
                 color: Colors.black.withOpacity(0.5),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(16, 16, 16, 16),
-                child: Text(
+                margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: const Text(
                   "Title",
                   style: TextStyle(
                       color: Colors.black,
@@ -75,11 +45,11 @@ class DetailPetaniView extends GetView<PetaniController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 16, right: 16),
+                margin: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Column",
                           style: TextStyle(
@@ -99,11 +69,11 @@ class DetailPetaniView extends GetView<PetaniController> {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Column",
                           style: TextStyle(
@@ -123,11 +93,11 @@ class DetailPetaniView extends GetView<PetaniController> {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Column",
                           style: TextStyle(
@@ -147,7 +117,7 @@ class DetailPetaniView extends GetView<PetaniController> {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xff919A92),
                     ),
                     Container(
